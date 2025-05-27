@@ -8,9 +8,10 @@ interface TaskItemProps {
   onToggle: (id: string) => void;
   onEdit: (task: Task) => void;
   onDelete: (id: string) => void;
+  onShare: (task: Task) => void;
 }
 
-export function TaskItem({ task, onToggle, onEdit, onDelete }: TaskItemProps) {
+export function TaskItem({ task, onToggle, onEdit, onDelete, onShare }: TaskItemProps) {
   return (
     <View style={styles.container}>
       <TouchableOpacity 
@@ -47,6 +48,9 @@ export function TaskItem({ task, onToggle, onEdit, onDelete }: TaskItemProps) {
         </View>
 
         <View style={styles.actions}>
+          <TouchableOpacity onPress={() => onShare(task)} style={styles.actionButton}>
+            <Ionicons name="share" size={20} color="#10B981" />
+          </TouchableOpacity>
           <TouchableOpacity onPress={() => onEdit(task)} style={styles.actionButton}>
             <Ionicons name="pencil" size={20} color="#60A5FA" />
           </TouchableOpacity>
